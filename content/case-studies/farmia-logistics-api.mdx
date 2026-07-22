@@ -1,0 +1,74 @@
+---
+title: Shipment tracking and waybills, wired straight into checkout
+summary: Integrated a national courier's APIs into an agricultural eCommerce platform so tracking and waybill generation stopped being manual work.
+client: Farmia
+industry: Agricultural eCommerce
+role: Full Stack Developer
+year: 2024
+order: 1
+liveUrl: https://farmia.ph/
+stack:
+  - Python
+  - Django
+  - Django REST Framework
+  - JavaScript
+  - PostgreSQL
+cover:
+  src: /case-studies/farmia-logistics-api/cover.png
+  alt: The Farmia order dashboard showing a list of shipments with live courier status labels.
+outcomes:
+  - label: Waybill generation
+    value: Automated
+  - label: Shipment status
+    value: Synced from the courier
+  - label: Coverage
+    value: Nationwide courier network
+screenshots:
+  - src: /case-studies/farmia-logistics-api/tracking.png
+    alt: A single order's detail view with a timeline of courier scan events from pickup to delivery.
+    caption: Each order carries the courier's scan history, so support answers "where is it?" without leaving the admin.
+  - src: /case-studies/farmia-logistics-api/waybill.png
+    alt: A generated waybill PDF preview with barcode, recipient address, and courier routing codes.
+    caption: Waybills are generated from order data on demand — no re-keying addresses into the courier's portal.
+---
+
+## The problem
+
+Farmia sells agricultural goods online and ships them across the country
+through J&T Express. Fulfilment worked, but it worked by hand: staff re-typed
+each order's recipient details into the courier's own portal to produce a
+waybill, then checked that portal again — order by order — whenever a customer
+asked where their delivery was.
+
+That is fine at ten orders a day and untenable at a hundred. Every manual
+re-keying is a chance to ship to the wrong barangay, and every status enquiry
+pulls someone away from actual work. The order data already existed in Farmia's
+database; it just had no route to the courier.
+
+## The approach
+
+We built the courier integration as a service layer inside the existing Django
+application rather than as a side system, so shipments stayed attached to the
+orders they belong to.
+
+- **A typed client for the courier's API.** One module owns authentication,
+  request signing, and the courier's error codes. Nothing else in the codebase
+  needs to know how J&T's API expects to be spoken to.
+- **Waybill generation from order data.** Creating a shipment maps an existing
+  order to the courier's payload and stores the returned waybill number against
+  it. Addresses are never re-typed.
+- **Status synchronisation.** Tracking events are pulled and normalised into a
+  shipment timeline the rest of the app can read, so the admin dashboard and any
+  customer-facing status both come from a single source.
+- **Failures that stay visible.** Courier APIs time out and reject payloads.
+  Rejections are recorded against the shipment with the courier's own reason
+  rather than swallowed, so a stuck order is something you can see instead of
+  something you discover from a complaint.
+
+## The outcome
+
+Fulfilment staff generate a waybill from the order they are already looking at,
+and shipment status arrives on its own instead of being fetched by a person.
+The integration is contained enough that adding a second courier later means
+writing another client against the same shipment model — not rebuilding
+fulfilment.
