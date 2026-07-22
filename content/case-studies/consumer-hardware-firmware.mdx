@@ -1,0 +1,53 @@
+---
+title: Firmware for consumer hardware shipped at volume
+summary: Embedded firmware development and hardware/software integration on consumer products, where a bug ships in a physical object and cannot be hotfixed.
+industry: Consumer electronics manufacturing
+confidential: true
+role: Embedded Software Engineer
+year: 2022
+order: 3
+stack:
+  - Embedded firmware
+  - Hardware/software integration
+  - Embedded systems debugging
+  - Performance optimisation
+---
+
+## The work
+
+Consumer hardware is an unforgiving place to write software. The firmware runs
+on a fixed, cheap microcontroller chosen long before the code was written, with
+a memory budget measured in kilobytes and a power budget that a careless loop
+can blow. There is no autoscaling and no rollback. Once a unit leaves the
+factory and reaches someone's home, the code on it is the code it has.
+
+That constraint shapes everything. Work on this product line covered firmware
+development, integration against the hardware it runs on, performance
+optimisation, and debugging — the ordinary discipline of embedded engineering,
+carried out where the cost of getting it wrong is a physical recall rather than
+a redeploy.
+
+## The approach
+
+- **Firmware written against real hardware, not an abstraction of it.** Timing,
+  interrupt behaviour, and peripheral quirks are properties of the board. They
+  are found on the bench, with instruments, not in a simulator.
+- **Integration as a shared problem with the hardware team.** On embedded
+  products the boundary between a firmware bug and a hardware fault is not
+  obvious, and it moves. Isolating which side a symptom belongs to is
+  cross-functional work by nature, and treating it as such is faster than each
+  discipline defending its own layer.
+- **Optimisation against a fixed budget.** Memory and power are not targets to
+  improve when convenient; they are ceilings set by a part that has already
+  been sourced. Performance work means fitting inside them, not going faster in
+  the abstract.
+- **Debugging without the usual instruments.** No log aggregator, no stack
+  trace, often no console. Faults are narrowed with a logic analyser, a
+  debugger on the target, and a hypothesis you can disprove.
+
+## Why it matters here
+
+Most of what GoodDev Technology builds runs on servers, where a mistake is a
+deploy away from being fixed. Embedded work builds a different reflex: verify
+before shipping, because after shipping there is no lever to pull. That habit
+is worth as much on a payment integration as it is on a microcontroller.
