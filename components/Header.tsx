@@ -46,7 +46,7 @@ export function Header() {
 
   return (
     <header className="border-grey-100 bg-paper sticky top-0 z-50 border-b">
-      <Container className="flex h-16 items-center justify-between gap-space-md">
+      <Container className="gap-space-md flex h-16 items-center justify-between">
         <Link
           href="/"
           className="text-ink text-lg font-bold tracking-tight"
@@ -58,7 +58,7 @@ export function Header() {
         {/* Desktop navigation */}
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-space-lg md:flex"
+          className="gap-space-lg hidden items-center md:flex"
         >
           {navLinks.map((link) => {
             const active = isActive(pathname, link.href);
@@ -78,7 +78,7 @@ export function Header() {
           })}
           <Link
             href={primaryCta.href}
-            className="bg-red text-paper text-small rounded-md px-space-md py-space-xs font-semibold transition-opacity hover:opacity-90"
+            className="bg-red text-paper text-small px-space-md py-space-xs rounded-md font-semibold transition-opacity hover:opacity-90"
           >
             {primaryCta.label}
           </Link>
@@ -108,7 +108,7 @@ export function Header() {
           className="bg-paper fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto md:hidden"
         >
           <nav aria-label="Mobile">
-            <Container className="flex flex-col gap-space-xs py-space-lg">
+            <Container className="gap-space-xs py-space-lg flex flex-col">
               {navLinks.map((link) => {
                 const active = isActive(pathname, link.href);
                 return (
@@ -118,7 +118,7 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "text-body rounded-md px-space-sm py-space-sm",
+                      "text-body px-space-sm py-space-sm rounded-md",
                       active
                         ? "bg-grey-100 text-ink font-semibold"
                         : "text-grey-700",
@@ -131,7 +131,7 @@ export function Header() {
               <Link
                 href={primaryCta.href}
                 onClick={() => setOpen(false)}
-                className="bg-red text-paper text-body mt-space-xs rounded-md px-space-sm py-space-sm text-center font-semibold"
+                className="bg-red text-paper text-body mt-space-xs px-space-sm py-space-sm rounded-md text-center font-semibold"
               >
                 {primaryCta.label}
               </Link>
