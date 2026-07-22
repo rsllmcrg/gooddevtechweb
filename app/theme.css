@@ -1,14 +1,23 @@
 /**
- * GoodDev Technology brand tokens.
+ * GoodDev Tech brand tokens.
  * This is the single source of truth for brand colors, spacing, and type
  * scale — change a value here, not in components.
+ *
+ * The three brand colours are fixed by BRAND-GUIDELINES.md v1.0 and match the
+ * logo artwork exactly; do not nudge them. Everything else below is site
+ * scaffolding built around them.
  */
 @theme {
-  /* Brand palette */
+  /* Brand palette — exact values from the guidelines */
+  --color-red: #da291c; /* Signal Red, Pantone 485 C */
   --color-ink: #111111;
-  --color-red: #d62828;
-  --color-red-hover: #b62222; /* red, ~15% darker, for interactive hover states */
-  --color-paper: #f4f4f4;
+  --color-paper: #ffffff;
+
+  /*
+   * Signal Red darkened ~15% for hover. Red is an accent, never a field
+   * colour — it belongs on the primary CTA and nothing larger.
+   */
+  --color-red-hover: #b92318;
 
   /* Neutral greys, ink -> paper */
   --color-grey-900: #1a1a1a;

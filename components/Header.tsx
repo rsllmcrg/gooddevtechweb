@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
+import { Logo } from "@/components/Logo";
 import { navLinks, primaryCta, siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -47,12 +48,22 @@ export function Header() {
   return (
     <header className="border-grey-100 bg-paper sticky top-0 z-50 border-b">
       <Container className="gap-space-md flex h-16 items-center justify-between">
+        {/*
+          Horizontal lockup — the guidelines' default for website headers. At
+          168px it clears the 140px minimum with room to spare, and with its
+          ½X clear space it stands 48px tall inside the 64px bar.
+
+          The Logo reserves that clear space as padding; -ml-3 pulls the left
+          half back out to the container edge so the wordmark optically lines
+          up with the content below. The clear space is preserved — it just
+          isn't counted twice against the gutter.
+        */}
         <Link
           href="/"
-          className="text-ink text-lg font-bold tracking-tight"
+          className="-ml-3 shrink-0"
           aria-label={`${siteConfig.name} — home`}
         >
-          {siteConfig.name}
+          <Logo width={168} priority alt="" />
         </Link>
 
         {/* Desktop navigation */}

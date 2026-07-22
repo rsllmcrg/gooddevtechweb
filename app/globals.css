@@ -2,13 +2,23 @@
 @import "./theme.css";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
+  /* Brand stack from BRAND-GUIDELINES.md — Inter, then system sans. */
+  --font-sans:
+    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 @layer base {
   body {
-    @apply bg-paper text-ink text-body;
+    @apply bg-paper text-ink text-body font-sans;
+    /*
+     * Inter ships an optical-size axis; letting the browser drive it gives
+     * headlines the Display cut and body copy the text cut, which is the
+     * split the guidelines describe. This is the browser default, but it is
+     * stated here so nothing turns it off by accident.
+     */
+    font-optical-sizing: auto;
   }
 
   h1 {
