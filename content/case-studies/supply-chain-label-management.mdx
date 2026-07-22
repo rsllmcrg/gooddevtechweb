@@ -1,0 +1,71 @@
+---
+title: Owning a feature end to end, from migration to modal
+summary: Delivered a complete label-management capability across database, API, and UI for an enterprise supply chain platform.
+industry: Enterprise supply chain SaaS
+confidential: true
+role: Full Stack Product Developer
+year: 2025
+order: 2
+stack:
+  - Python
+  - Django
+  - React
+  - TypeScript
+  - PostgreSQL
+  - Docker
+---
+
+## The problem
+
+The client runs a supply chain platform where products carry labels that drive
+downstream handling — how an item is identified, grouped, and routed. Labels
+existed in the data model only as loose text on the product record. Anything
+that needed to reason about them had to parse strings, and anything that needed
+to change them meant editing products one at a time.
+
+The ask was a first-class label capability: labels as real entities, manageable
+from the product UI, available to the API. That work does not sit in one layer.
+It starts in the database and ends in a modal.
+
+## The approach
+
+We took the feature as a single vertical slice, with one engineer owning every
+layer of it — which kept the seams between them honest.
+
+### Backend
+
+- **Model changes** introducing labels as their own entity with an explicit
+  relationship to products, replacing the previous free-text field.
+- **A database migration** to move existing label data onto the new structure
+  without downtime and without losing rows — written to be reversible, and
+  rehearsed against a copy of production shape before it ran anywhere real.
+- **Serializer updates** so labels are represented consistently everywhere the
+  API exposes a product.
+- **API endpoints** for listing, attaching, and detaching labels, following the
+  conventions already established in the codebase rather than introducing a
+  second style alongside them.
+
+### Frontend
+
+- **A typed API client** generated against the endpoints above, so a field
+  renamed in Django surfaces as a TypeScript error at build time instead of an
+  `undefined` in the browser.
+- **Label management UI** in React and TypeScript — assigning, editing, and
+  removing labels from the product view where users already work.
+- **Modal components** for the create and edit flows, built on the design
+  system already in the product so the feature does not announce itself as
+  bolted on.
+
+The shape of the work, top to bottom:
+
+```
+Product model → migration → serializer → API view → typed client → React UI
+```
+
+## The outcome
+
+Labels became a real part of the domain model instead of a string convention,
+and the team gained a UI for managing them without engineering involvement.
+Because one person carried the feature across all six layers, there was no
+handoff where a field name drifted or an edge case fell between two people's
+definitions of done.
