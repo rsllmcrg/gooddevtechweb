@@ -22,3 +22,21 @@ export const contactInfo = {
     { label: "X (Twitter)", href: "https://example.com/x-placeholder" },
   ],
 };
+
+/**
+ * Primary navigation. Single source of truth for the header links — the order
+ * here is the order rendered in both the desktop nav and the mobile menu.
+ */
+export const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+/** The header's primary call to action. */
+export const primaryCta = {
+  label: "Start a project",
+  href: "/contact",
+} as const;
