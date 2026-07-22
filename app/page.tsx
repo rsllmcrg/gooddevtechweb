@@ -3,7 +3,8 @@ import { Card } from "@/components/Card";
 import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
 import { siteConfig } from "@/content/site";
-import { featuredWork, principles, services, techStack } from "@/content/home";
+import { featuredWork, principles, techStack } from "@/content/home";
+import { services } from "@/content/services";
 
 export default function Home() {
   return (
@@ -24,14 +25,14 @@ export default function Home() {
       {/* Services strip */}
       <Section className="border-grey-100 border-t">
         <h2>What we do</h2>
-        <div className="mt-space-lg gap-space-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-space-lg gap-space-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <div key={service.title}>
+            <div key={service.slug}>
               <h3 className="text-h4-sm md:text-h4-md lg:text-h4 font-semibold">
                 {service.title}
               </h3>
               <p className="text-grey-700 text-small mt-space-xs">
-                {service.description}
+                {service.teaser}
               </p>
             </div>
           ))}

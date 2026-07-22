@@ -1,22 +1,3 @@
-export const services = [
-  {
-    title: "Web & product development",
-    description: "Sites, portals, and dashboards built to last.",
-  },
-  {
-    title: "Custom software & internal tools",
-    description: "The system that doesn't exist off the shelf.",
-  },
-  {
-    title: "Mobile apps",
-    description: "iOS and Android, native where it matters.",
-  },
-  {
-    title: "Ongoing support & maintenance",
-    description: "A team that answers when something breaks.",
-  },
-];
-
 /**
  * PLACEHOLDER — structural placeholders only, matching the Work page
  * entries in content/copy-deck.md. No invented client names, industries,
