@@ -12,19 +12,19 @@
   }
 
   h1 {
-    @apply text-h1;
+    @apply text-h1-sm md:text-h1-md lg:text-h1 font-bold;
   }
 
   h2 {
-    @apply text-h2;
+    @apply text-h2-sm md:text-h2-md lg:text-h2 font-bold;
   }
 
   h3 {
-    @apply text-h3;
+    @apply text-h3-sm md:text-h3-md lg:text-h3 font-semibold;
   }
 
   h4 {
-    @apply text-h4;
+    @apply text-h4-sm md:text-h4-md lg:text-h4 font-semibold;
   }
 
   small {
