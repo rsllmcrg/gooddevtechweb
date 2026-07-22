@@ -7,6 +7,7 @@
   /* Brand palette */
   --color-ink: #111111;
   --color-red: #d62828;
+  --color-red-hover: #b62222; /* red, ~15% darker, for interactive hover states */
   --color-paper: #f4f4f4;
 
   /* Neutral greys, ink -> paper */
