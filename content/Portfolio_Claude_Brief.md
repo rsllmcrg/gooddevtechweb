@@ -5,12 +5,12 @@ audience is technical hiring managers and founders.
 
 ## Design
 
--   Minimal, premium, black/white with subtle red accents.
--   Inspired by Linear, Vercel, Stripe, Raycast.
--   Focus on credibility and engineering depth.
--   Mobile-first.
--   Sections: Hero, About, Experience, Selected Projects, Tech Stack,
-    Contact.
+- Minimal, premium, black/white with subtle red accents.
+- Inspired by Linear, Vercel, Stripe, Raycast.
+- Focus on credibility and engineering depth.
+- Mobile-first.
+- Sections: Hero, About, Experience, Selected Projects, Tech Stack,
+  Contact.
 
 ## Important Privacy Rule
 
@@ -27,7 +27,7 @@ Include a note:
 > confidentiality while accurately representing my technical
 > contributions.
 
-------------------------------------------------------------------------
+---
 
 # Experience
 
@@ -39,7 +39,7 @@ Highlights: - Embedded firmware development - Hardware/software
 integration - Performance optimization - Debugging embedded systems -
 Cross-functional engineering collaboration
 
-------------------------------------------------------------------------
+---
 
 ## Full Stack Developer --- TopApps
 
@@ -50,14 +50,14 @@ backend APIs - Built responsive React frontends - Designed MySQL
 databases - AWS deployment - Production maintenance - Performance
 optimization
 
-------------------------------------------------------------------------
+---
 
 ## IT Operations --- The Umonics Method
 
 Responsibilities: - IT operations - User onboarding - Access
 management - System configuration - Internal support - Documentation
 
-------------------------------------------------------------------------
+---
 
 # Selected Projects
 
@@ -76,7 +76,7 @@ integration
 
 Stack: Python Django REST APIs JavaScript PostgreSQL
 
-------------------------------------------------------------------------
+---
 
 ## 2. Enterprise Supply Chain SaaS (Confidential)
 
@@ -105,7 +105,7 @@ database migrations, and APIs."
 
 Do NOT mention TPS Nutrients by name.
 
-------------------------------------------------------------------------
+---
 
 # Skills
 
@@ -119,7 +119,7 @@ Cloud - AWS - Docker - Linux
 
 Other - Git - CI/CD - API Integration - Embedded Systems
 
-------------------------------------------------------------------------
+---
 
 Generate: - Premium one-page portfolio - Strong case study cards -
 Timeline experience - Animated but tasteful UI - SEO-friendly -
