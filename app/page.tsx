@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
 import { siteConfig } from "@/content/site";
 import { featuredWork, principles, services, techStack } from "@/content/home";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "GoodDev Technology — Software Development Studio in the Philippines",
+  description:
+    "GoodDev Technology builds web apps and custom software for Philippine SMEs and overseas teams alike — Manila-based, English-speaking, and timezone-friendly for APAC, US and EU clients.",
+  path: "/",
+});
 
 export default function Home() {
   return (

@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import { Section } from "@/components/Section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "About — GoodDev Technology",
+  description:
+    "GoodDev Technology is a Philippine software studio built to work as easily with local SMEs as with overseas teams. Here's what we believe and how we work.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

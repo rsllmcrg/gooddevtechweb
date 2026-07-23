@@ -4,12 +4,14 @@ import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
 import { services } from "@/content/home";
 import { contactInfo } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact — GoodDev Technology",
   description:
     "Get in touch with GoodDev Technology. Based in Manila, working with clients across the Philippines, the US, the UK, and the EU.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const mailHref = `mailto:${contactInfo.email}`;

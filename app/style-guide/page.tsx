@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { TextLink } from "@/components/TextLink";
 import { Section } from "@/components/Section";
+
+// Internal dev tool, not a real content page — kept out of search results
+// and (via app/sitemap.ts, which only lists real pages) out of the sitemap.
+export const metadata: Metadata = {
+  title: "Style guide",
+  robots: { index: false, follow: false },
+};
 
 function Example({
   title,

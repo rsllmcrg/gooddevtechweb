@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { siteConfig } from "@/content/site";
+import { localBusinessJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Canonical origin for the deployment. Set per environment in Vercel
-// (Production / Preview / Development); falls back to localhost for local dev.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
+// No title template here on purpose — each page (via lib/seo.ts's
+// pageMetadata) passes its own already-complete title (e.g. "Services —
+// GoodDev Technology") so the <title> tag and the Open Graph/Twitter titles
+// always match exactly, rather than a template only affecting one of them.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: siteConfig.name,
@@ -36,6 +37,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd()),
+          }}
+        />
         <Header />
         {children}
         <Footer />
