@@ -21,6 +21,8 @@ type FormValues = {
   service: string;
   budget: string;
   message: string;
+  /** Honeypot — real visitors never see or fill this. See the input below. */
+  website: string;
 };
 
 const initialValues: FormValues = {
@@ -30,6 +32,7 @@ const initialValues: FormValues = {
   service: "",
   budget: "",
   message: "",
+  website: "",
 };
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
@@ -143,6 +146,28 @@ export function ContactForm({ services }: { services: string[] }) {
       noValidate
       className="gap-space-lg flex flex-col"
     >
+      {/*
+        Honeypot: positioned off-screen (not display:none/visibility:hidden,
+        which some bots specifically skip) and pulled out of tab order and
+        the accessibility tree, so no real visitor — sighted, keyboard, or
+        screen reader — ever encounters it. A bot that fills every field it
+        finds will fill this one too; the server rejects any submission
+        where it's non-empty (see app/api/contact/route.ts).
+      */}
+      <div className="absolute top-auto -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="website">Leave this field blank</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          aria-hidden="true"
+          autoComplete="off"
+          value={values.website}
+          onChange={(event) => updateField("website", event.target.value)}
+        />
+      </div>
+
       {attempted && errorEntries.length > 0 && (
         <div
           ref={summaryRef}
