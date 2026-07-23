@@ -10,6 +10,13 @@
   --color-red-hover: #b62222; /* red, ~15% darker, for interactive hover states */
   --color-paper: #f4f4f4;
 
+  /*
+   * Semantic, not brand — form validation/error states. Kept as its own
+   * token (rather than reusing --color-red directly) so the accent color
+   * can change without silently recoloring error states, and vice versa.
+   */
+  --color-error: #d62828;
+
   /* Neutral greys, ink -> paper */
   --color-grey-900: #1a1a1a;
   --color-grey-700: #3d3d3d;
