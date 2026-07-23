@@ -36,6 +36,20 @@ const outcomeSchema = z.strictObject({
 });
 
 /**
+ * Keep in sync with the titles in content/services.ts. Optional — not every
+ * case study maps to one of the five services GoodDev currently sells (e.g.
+ * embedded-firmware work predates the studio's service lineup), and forcing
+ * a value onto those would misrepresent what's actually on offer.
+ */
+const SERVICE_TITLES = [
+  "Web Apps",
+  "Mobile",
+  "Integrations",
+  "Cloud & DevOps",
+  "Support & Team Extension",
+] as const;
+
+/**
  * `.strictObject` rejects unknown keys on purpose: a typo like `stacks:` should
  * fail loudly at build time, not silently drop the field from the page.
  */
@@ -54,6 +68,8 @@ const frontmatterSchema = z
     // --- Optional — the page degrades gracefully when these are absent ----
     /** Sort key on the /work index, ascending. Unset entries sort last. */
     order: z.number().int().optional(),
+    /** One of the five services on the Services page — see SERVICE_TITLES. */
+    service: z.enum(SERVICE_TITLES).optional(),
     /** Omit on NDA work; see the `confidential` cross-check below. */
     client: z.string().min(1).optional(),
     confidential: z.boolean().default(false),

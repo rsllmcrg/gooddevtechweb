@@ -88,6 +88,12 @@ export default async function CaseStudyPage({
               <dt className="text-grey-500 text-small">Sector</dt>
               <dd>{study.industry}</dd>
             </div>
+            {study.service && (
+              <div>
+                <dt className="text-grey-500 text-small">Service</dt>
+                <dd>{study.service}</dd>
+              </div>
+            )}
             {study.liveUrl && (
               <div>
                 <dt className="text-grey-500 text-small">Live</dt>

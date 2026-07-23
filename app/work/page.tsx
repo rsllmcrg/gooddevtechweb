@@ -29,7 +29,12 @@ export default function WorkPage() {
       </header>
 
       {studies.length > 0 ? (
-        <div className="gap-space-xl grid grid-cols-1 lg:grid-cols-2">
+        // Card heights vary (cover image, stack length), so a same-height
+        // grid row stretches short cards next to tall ones and leaves a
+        // block of empty space — a masonry-style column flow packs cards by
+        // actual height instead, which is what keeps 2 or 3 entries reading
+        // as a deliberate set rather than a half-empty grid.
+        <div className="gap-space-xl [&>*]:mb-space-xl columns-1 lg:columns-2 [&>*]:break-inside-avoid">
           {studies.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
           ))}

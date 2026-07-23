@@ -1,12 +1,15 @@
 import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
+import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
 import { siteConfig } from "@/content/site";
-import { featuredWork, principles, techStack } from "@/content/home";
+import { principles, techStack } from "@/content/home";
 import { services } from "@/content/services";
+import { getCaseStudies } from "@/lib/case-studies";
 
 export default function Home() {
+  const featuredStudies = getCaseStudies().slice(0, 3);
+
   return (
     <>
       {/* Hero — what we build, for whom, one action, all above the fold */}
@@ -45,12 +48,9 @@ export default function Home() {
       {/* Featured case studies */}
       <Section className="border-grey-100 border-t">
         <h2>A few things we&apos;ve built</h2>
-        <div className="mt-space-lg gap-space-lg grid grid-cols-1 md:grid-cols-3">
-          {featuredWork.map((project, index) => (
-            <Card key={index} className="gap-space-xs flex flex-col">
-              <p className="text-grey-500 text-small italic">{project.name}</p>
-              <p>{project.summary}</p>
-            </Card>
+        <div className="mt-space-lg gap-space-lg [&>*]:mb-space-lg columns-1 sm:columns-2 lg:columns-3 [&>*]:break-inside-avoid">
+          {featuredStudies.map((study) => (
+            <CaseStudyCard key={study.slug} study={study} />
           ))}
         </div>
         <TextLink href="/work" className="mt-space-lg inline-block">

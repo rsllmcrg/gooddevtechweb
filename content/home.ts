@@ -1,24 +1,4 @@
 /**
- * PLACEHOLDER — structural placeholders only, matching the Work page
- * entries in content/copy-deck.md. No invented client names, industries,
- * or outcomes. Replace with real projects before launch.
- */
-export const featuredWork = [
-  {
-    name: "[Project name]",
-    summary: "[What the client needed, and what we built, in one sentence.]",
-  },
-  {
-    name: "[Project name]",
-    summary: "[What the client needed, and what we built, in one sentence.]",
-  },
-  {
-    name: "[Project name]",
-    summary: "[What the client needed, and what we built, in one sentence.]",
-  },
-];
-
-/**
  * Reflects what this project itself is built with (Next.js, React,
  * TypeScript, Tailwind) plus common complementary backend tooling.
  * Confirm this matches the studio's actual client-facing stack before

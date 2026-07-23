@@ -19,11 +19,11 @@ avatars, and merchandise.
 
 ## Lockups
 
-| Lockup | Use for |
-| --- | --- |
-| **Horizontal** | Default. Website headers, email signatures, letterhead, slide masters, invoices. |
-| **Stacked** | Narrow or square spaces — mobile splash screens, portrait ads, event banners, merchandise. |
-| **Icon** | Standalone contexts only: app icons, favicons, social avatars, watermarks. |
+| Lockup         | Use for                                                                                    |
+| -------------- | ------------------------------------------------------------------------------------------ |
+| **Horizontal** | Default. Website headers, email signatures, letterhead, slide masters, invoices.           |
+| **Stacked**    | Narrow or square spaces — mobile splash screens, portrait ads, event banners, merchandise. |
+| **Icon**       | Standalone contexts only: app icons, favicons, social avatars, watermarks.                 |
 
 There are two icon cuts. The **primary** icon has three chevrons and is used at
 32 px and above. The **compact** icon has two chevrons with wider gaps, cut
@@ -34,11 +34,11 @@ the compact cut for favicons and small UI chrome. Do not use it above 24 px.
 
 ## Colour
 
-| Name | Hex | RGB | CMYK | Pantone |
-| --- | --- | --- | --- | --- |
-| **Signal Red** | `#DA291C` | 218, 41, 28 | 0, 95, 100, 0 | 485 C |
-| **Ink** | `#111111` | 17, 17, 17 | 0, 0, 0, 100 | Black 6 C (approx.) |
-| **Paper** | `#FFFFFF` | 255, 255, 255 | 0, 0, 0, 0 | — |
+| Name           | Hex       | RGB           | CMYK          | Pantone             |
+| -------------- | --------- | ------------- | ------------- | ------------------- |
+| **Signal Red** | `#DA291C` | 218, 41, 28   | 0, 95, 100, 0 | 485 C               |
+| **Ink**        | `#111111` | 17, 17, 17    | 0, 0, 0, 100  | Black 6 C (approx.) |
+| **Paper**      | `#FFFFFF` | 255, 255, 255 | 0, 0, 0, 0    | —                   |
 
 Signal Red is matched to Pantone 485 C, so spot-colour print jobs match the
 screen colour without guesswork. For large solid areas of Ink in print, use a
@@ -77,12 +77,12 @@ More space is always fine. Less is not.
 
 ## Minimum sizes
 
-| Asset | Screen | Print |
-| --- | --- | --- |
-| Horizontal lockup | 140 px wide | 32 mm wide |
-| Stacked lockup | 110 px wide | 25 mm wide |
-| Icon (primary) | 32 px | 8 mm |
-| Icon (compact) | 16 px | not for print |
+| Asset             | Screen      | Print         |
+| ----------------- | ----------- | ------------- |
+| Horizontal lockup | 140 px wide | 32 mm wide    |
+| Stacked lockup    | 110 px wide | 25 mm wide    |
+| Icon (primary)    | 32 px       | 8 mm          |
+| Icon (compact)    | 16 px       | not for print |
 
 Below 140 px wide the horizontal wordmark stops resolving — the counters in
 "GoodDev" fill in and it reads as a grey bar. If you have less room than that,
@@ -121,8 +121,15 @@ they render identically on a machine that has never had Inter installed.
 Suggested web stack:
 
 ```css
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-             Roboto, Helvetica, Arial, sans-serif;
+font-family:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif;
 ```
 
 Inter Display is the optical cut intended for headlines at roughly 24 px and
@@ -133,14 +140,14 @@ text will look slightly too tight.
 
 ## File formats
 
-| Folder | Contents | Use |
-| --- | --- | --- |
-| `source/svg/` | Master vector art, all lockups and colourways | Editable source. Opens in Illustrator, Figma, Inkscape, Affinity. |
-| `png/web/` | Transparent PNG, 400–2400 px wide | Web, apps, slides, documents |
-| `png/icon/` | Transparent PNG 16–1024 px, plus `favicon.ico` | App icons, favicons, UI |
-| `png/social/` | Square avatars on solid Red and Ink | Social profile images |
-| `jpeg/` | White-background JPEG, 300 dpi tagged | Where JPEG is mandated. Prefer PNG or PDF wherever possible. |
-| `print/` | Vector PDF | Print production, hand off to any printer |
+| Folder        | Contents                                       | Use                                                               |
+| ------------- | ---------------------------------------------- | ----------------------------------------------------------------- |
+| `source/svg/` | Master vector art, all lockups and colourways  | Editable source. Opens in Illustrator, Figma, Inkscape, Affinity. |
+| `png/web/`    | Transparent PNG, 400–2400 px wide              | Web, apps, slides, documents                                      |
+| `png/icon/`   | Transparent PNG 16–1024 px, plus `favicon.ico` | App icons, favicons, UI                                           |
+| `png/social/` | Square avatars on solid Red and Ink            | Social profile images                                             |
+| `jpeg/`       | White-background JPEG, 300 dpi tagged          | Where JPEG is mandated. Prefer PNG or PDF wherever possible.      |
+| `print/`      | Vector PDF                                     | Print production, hand off to any printer                         |
 
 **On the `.ai` request.** `.ai` is Adobe's proprietary format and cannot be
 generated outside Illustrator. The SVG files are the editable vector source and

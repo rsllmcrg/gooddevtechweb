@@ -31,7 +31,8 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
 
         <div className="p-space-lg gap-space-sm flex flex-col">
           <p className="text-grey-500 text-small">
-            {study.attribution} · {study.year}
+            {study.industry}
+            {study.service ? ` · ${study.service}` : ` · ${study.year}`}
           </p>
           <h3 className="group-hover:text-red transition-colors duration-150">
             {study.title}
