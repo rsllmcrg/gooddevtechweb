@@ -5,7 +5,7 @@ export const contentType = ogImageContentType;
 
 export default async function Image() {
   return renderOgImage(
-    "Software Development Studio",
-    "Web apps and custom software for Philippine SMEs and overseas teams.",
+    "Let's Talk",
+    "Based in Manila, working with clients across the Philippines, the US, the UK, and the EU.",
   );
 }

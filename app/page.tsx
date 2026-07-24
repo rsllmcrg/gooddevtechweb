@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { Section } from "@/components/Section";
@@ -6,6 +7,14 @@ import { siteConfig } from "@/content/site";
 import { principles, techStack } from "@/content/home";
 import { services } from "@/content/services";
 import { getCaseStudies } from "@/lib/case-studies";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "GoodDev Technology — Software Development Studio",
+  description:
+    "GoodDev Technology builds web apps and custom software for SMEs and overseas teams alike — Manila-based, English-speaking, and timezone-friendly for APAC, US and EU clients.",
+  path: "/",
+});
 
 export default function Home() {
   const featuredStudies = getCaseStudies().slice(0, 3);
@@ -14,9 +23,7 @@ export default function Home() {
     <>
       {/* Hero — what we build, for whom, one action, all above the fold */}
       <Section containerClassName="flex flex-col items-center gap-space-md text-center">
-        <h1 className="max-w-2xl">
-          A Philippine software studio built for global teams.
-        </h1>
+        <h1 className="max-w-2xl">A software studio built for global teams.</h1>
         <p className="text-grey-700 max-w-md">
           {siteConfig.name} designs and ships web and software products for
           local SMEs and overseas companies alike — with the timezone overlap,
@@ -46,7 +53,10 @@ export default function Home() {
       </Section>
 
       {/* Featured case studies */}
-      <Section className="border-grey-100 border-t">
+      <Section
+        className="border-grey-100 border-t"
+        containerClassName="flex flex-col items-center gap-space-md text-center"
+      >
         <h2>A few things we&apos;ve built</h2>
         <div className="mt-space-lg gap-space-lg [&>*]:mb-space-lg columns-1 sm:columns-2 lg:columns-3 [&>*]:break-inside-avoid">
           {featuredStudies.map((study) => (

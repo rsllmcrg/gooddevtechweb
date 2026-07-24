@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
 import { services } from "@/content/services";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = pageMetadata({
+  title: "Services — GoodDev Technology",
   description:
-    "Web apps, mobile, integrations, cloud & DevOps, and ongoing support — built by a Philippine team that works with local SMEs and overseas companies alike.",
-};
+    "Web apps, custom software, mobile apps, integrations, and ongoing support — built by a Philippine team that works with local SMEs and overseas companies alike.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
