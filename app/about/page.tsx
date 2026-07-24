@@ -25,8 +25,8 @@ export default function AboutPage() {
           &quot;maintainable&quot; as a feature — not an afterthought.
         </p>
         <p className="text-grey-500 text-small">
-          Based in {contactInfo.city} — building for clients here in the
-          Philippines and abroad, across the US, the UK, and the EU.
+          Based in {contactInfo.city} — working with clients around the
+          world.
         </p>
         <p className="text-grey-700 mt-space-sm max-w-2xl">{foundingStory}</p>
       </Section>

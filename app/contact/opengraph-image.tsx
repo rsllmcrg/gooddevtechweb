@@ -6,6 +6,6 @@ export const contentType = ogImageContentType;
 export default async function Image() {
   return renderOgImage(
     "Let's Talk",
-    "Based in Lipa City, Philippines, working with clients across the Philippines, the US, the UK, and the EU.",
+    "Based in Lipa City, Philippines, working with clients around the world.",
   );
 }
