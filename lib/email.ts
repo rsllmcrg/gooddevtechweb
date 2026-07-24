@@ -103,7 +103,7 @@ export async function sendContactNotification(
     : DEFAULT_RECIPIENTS;
   const fromEmail =
     process.env.CONTACT_FROM_EMAIL ?? "stehencoronel0913@gmail.com";
-  const fromName = process.env.CONTACT_FROM_NAME ?? "GoodDev Technology";
+  const fromName = process.env.CONTACT_FROM_NAME ?? "GoodDev Tech";
 
   const response = await fetch(BREVO_SEND_URL, {
     method: "POST",
