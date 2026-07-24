@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { BrowserMockup } from "@/components/BrowserMockup";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
-import { featuredProject, projects } from "@/content/work";
+import { TextLink } from "@/components/TextLink";
+import { confidentialityNote, projects } from "@/content/work";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Work — GoodDev Technology",
   description:
-    "Selected web and software products GoodDev Technology has designed, built, and shipped for SMEs and overseas teams.",
+    "Selected web and software projects — API integrations, custom platforms, and full-stack product work delivered end to end.",
   path: "/work",
 });
 
@@ -37,7 +38,18 @@ function Tags({ tags }: { tags: string[] }) {
   );
 }
 
+/** Strip the scheme/www so a public URL reads cleanly as a link label. */
+function hostLabel(href: string): string {
+  return href
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "");
+}
+
 export default function WorkPage() {
+  const featured = projects.filter((project) => project.featured);
+  const more = projects.filter((project) => !project.featured);
+
   return (
     <>
       {/* Intro — editorial, left-aligned */}
@@ -45,53 +57,85 @@ export default function WorkPage() {
         <Eyebrow>Selected work</Eyebrow>
         <h1>Software we&apos;ve designed, built, and shipped.</h1>
         <p className="text-grey-700 max-w-2xl">
-          A look at the products we&apos;ve delivered — web platforms, custom
-          tools, and mobile apps for teams that needed something that actually
-          fit how they work.
+          A closer look at recent projects — the integrations, platforms, and
+          interfaces we&apos;ve delivered end to end.
+        </p>
+        <p className="text-grey-500 text-small max-w-2xl">
+          {confidentialityNote}
         </p>
       </Section>
 
-      {/* Featured project — large showcase */}
-      <Section className="border-grey-100 border-t">
-        <div className="gap-space-xl lg:gap-space-2xl grid items-center lg:grid-cols-2">
-          <BrowserMockup variant={featuredProject.variant} />
-          <div className="gap-space-md flex flex-col">
-            <Eyebrow>
-              Featured · {featuredProject.category} · {featuredProject.year}
-            </Eyebrow>
-            <h2>{featuredProject.name}</h2>
-            <p className="text-grey-700">{featuredProject.summary}</p>
-            {featuredProject.result && (
-              <p className="text-ink font-semibold">{featuredProject.result}</p>
-            )}
-            <div className="mt-space-xs">
-              <Tags tags={featuredProject.tags} />
+      {/* One full-width showcase row per featured project, image side alternating */}
+      {featured.map((project, index) => (
+        <Section key={project.name} className="border-grey-100 border-t">
+          <div className="gap-space-xl lg:gap-space-2xl grid items-center lg:grid-cols-2">
+            <BrowserMockup
+              variant={project.variant}
+              className={index % 2 === 1 ? "lg:order-last" : undefined}
+            />
+            <div className="gap-space-md flex flex-col">
+              <Eyebrow>
+                {project.confidential ? "Confidential · " : ""}
+                {project.category}
+              </Eyebrow>
+              <h2>{project.name}</h2>
+              <p className="text-grey-700">{project.summary}</p>
+
+              <ul className="gap-space-xs sm:gap-x-space-lg grid sm:grid-cols-2">
+                {project.highlights.map((highlight) => (
+                  <li
+                    key={highlight}
+                    className="text-grey-700 text-small gap-space-sm flex"
+                  >
+                    <span aria-hidden="true" className="text-grey-300">
+                      ›
+                    </span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-space-xs">
+                <Tags tags={project.tags} />
+              </div>
+
+              {project.href && (
+                <TextLink href={project.href} className="mt-space-xs">
+                  Visit {hostLabel(project.href)} ↗
+                </TextLink>
+              )}
             </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      ))}
 
-      {/* Project grid */}
-      <Section className="border-grey-100 border-t">
-        <h2>More projects</h2>
-        <div className="mt-space-xl gap-space-xl sm:gap-space-2xl grid sm:grid-cols-2">
-          {projects.map((project) => (
-            <article key={project.name} className="gap-space-md flex flex-col">
-              <BrowserMockup variant={project.variant} />
-              <div className="gap-space-sm flex flex-col">
-                <Eyebrow>
-                  {project.category} · {project.year}
-                </Eyebrow>
-                <h3>{project.name}</h3>
-                <p className="text-grey-700 text-small">{project.summary}</p>
-                <div className="mt-space-xs">
-                  <Tags tags={project.tags} />
+      {/* More projects — compact grid */}
+      {more.length > 0 && (
+        <Section className="border-grey-100 border-t">
+          <h2>More projects</h2>
+          <div className="mt-space-xl gap-space-xl sm:gap-space-2xl grid sm:grid-cols-2">
+            {more.map((project) => (
+              <article
+                key={project.name}
+                className="gap-space-md flex flex-col"
+              >
+                <BrowserMockup variant={project.variant} />
+                <div className="gap-space-sm flex flex-col">
+                  <Eyebrow>
+                    {project.confidential ? "Confidential · " : ""}
+                    {project.category}
+                  </Eyebrow>
+                  <h3>{project.name}</h3>
+                  <p className="text-grey-700 text-small">{project.summary}</p>
+                  <div className="mt-space-xs">
+                    <Tags tags={project.tags} />
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
+              </article>
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Closing CTA */}
       <Section

@@ -1,76 +1,132 @@
 /**
- * PLACEHOLDER — the projects below are illustrative stand-ins, not real
- * client engagements. Names, results, and metrics are invented to show the
- * page layout. Replace every entry (and drop this notice) with real,
- * permitted case studies before launch.
+ * Real, non-confidential project descriptions. Two rules govern this file:
+ *
+ *  1. Do not invent client names or metrics. Confidential engagements are
+ *     described by industry and project type only — never the client's name.
+ *  2. Public projects (with a `href`) may be named because they are already
+ *     public.
+ *
+ * Keep this accurate: it represents actual technical work. Summaries and
+ * tech stacks for the smaller projects were drafted from short titles —
+ * confirm/adjust the specifics before launch.
  */
 
 export type Project = {
-  /** Project or product name. */
+  /** Project or product name (anonymized for confidential work). */
   name: string;
-  /** Short kind-of-work label, e.g. "Web app". */
+  /** Short role/kind label, e.g. "Full-stack · Logistics". */
   category: string;
-  /** Year shipped, shown as small meta. */
-  year: string;
-  /** One- to two-sentence description of the work. */
+  /** Plain-language description of the work delivered. */
   summary: string;
-  /** Stack / discipline tags rendered as pills. */
+  /** Concrete contributions — accurate, no invented outcomes. */
+  highlights: string[];
+  /** Stack tags rendered as pills. */
   tags: string[];
-  /** Optional headline outcome, shown on the featured project. */
-  result?: string;
-  /**
-   * Which abstract mockup layout to draw (see components/BrowserMockup.tsx).
-   * Purely decorative — no real screenshots exist yet.
-   */
+  /** Public URL, when the project is public and may be named/linked. */
+  href?: string;
+  /** True when the client is under NDA and must stay anonymous. */
+  confidential?: boolean;
+  /** True to render as a large showcase row; otherwise it goes in the grid. */
+  featured?: boolean;
+  /** Which abstract mockup layout to draw (see components/BrowserMockup.tsx). */
   variant: 1 | 2 | 3 | 4;
 };
 
-export const featuredProject: Project = {
-  name: "Coastline Logistics Portal",
-  category: "Web platform",
-  year: "2025",
-  summary:
-    "A shipment-tracking and dispatch dashboard for a regional freight operator — one place for the ops team to book, route, and monitor deliveries in real time, replacing a tangle of spreadsheets and phone calls.",
-  result: "Cut average dispatch time by 40% across three depots.",
-  tags: ["Next.js", "TypeScript", "PostgreSQL", "Mapbox", "AWS"],
-  variant: 2,
-};
+/** Shown on the page because at least one project below is anonymized. */
+export const confidentialityNote =
+  "Some projects are presented anonymously to respect client confidentiality, while accurately representing the technical work delivered.";
 
 export const projects: Project[] = [
   {
-    name: "Sari Retail POS",
-    category: "Web & mobile",
-    year: "2025",
+    name: "Farmia — Logistics API Integration",
+    category: "Full-stack · Logistics",
+    href: "https://farmia.ph/",
+    featured: true,
     summary:
-      "Point-of-sale and inventory for neighborhood retailers — offline-first on the counter, synced to a web back office for owners.",
-    tags: ["React Native", "Node.js", "SQLite"],
-    variant: 4,
+      "Integrated J&T Express shipping APIs into Farmia's platform so the team could track shipments and generate waybills without leaving their dashboard.",
+    highlights: [
+      "J&T Express tracking API integration",
+      "Automated waybill generation",
+      "Shipment status synchronization",
+      "Backend API development",
+      "Dashboard integration",
+    ],
+    tags: ["Python", "Django", "REST APIs", "JavaScript", "PostgreSQL"],
+    variant: 2,
   },
   {
-    name: "MediQueue",
-    category: "Web app",
-    year: "2024",
+    name: "Enterprise Supply Chain SaaS",
+    category: "Full-stack product",
+    confidential: true,
+    featured: true,
     summary:
-      "Appointment booking and live queue management for a multi-branch clinic group, with SMS reminders and a front-desk console.",
-    tags: ["Next.js", "PostgreSQL", "Twilio"],
+      "A confidential enterprise supply-chain platform. Owned complete vertical slices across frontend, backend, database migrations, and APIs — from a product-model change through migration, serializer, and API view to a typed client and the React UI.",
+    highlights: [
+      "Django model changes, migrations & serializers",
+      "REST API endpoints",
+      "Label management UI in React + TypeScript",
+      "Reusable modal components",
+      "Typed API client",
+      "End-to-end feature ownership",
+    ],
+    tags: ["Python", "Django", "React", "TypeScript", "Docker", "PostgreSQL"],
     variant: 3,
   },
   {
-    name: "Harvest Direct",
-    category: "Marketplace",
-    year: "2024",
+    name: "Sari-Sari Store POS",
+    category: "Point of sale · Retail",
     summary:
-      "A B2B marketplace connecting agricultural suppliers with wholesale buyers — catalogs, quotes, and order tracking in one place.",
-    tags: ["Next.js", "GraphQL", "Stripe"],
-    variant: 1,
+      "A point-of-sale and inventory app for a neighborhood sari-sari store — ring up sales, track stock, and see daily takings from a simple, touch-friendly interface.",
+    highlights: [
+      "Fast product search & checkout",
+      "Inventory tracking",
+      "Daily sales summary",
+      "Receipt generation",
+    ],
+    tags: ["React", "Node.js", "PostgreSQL"],
+    variant: 4,
   },
   {
-    name: "Remit Ledger",
-    category: "Internal tool",
-    year: "2023",
+    name: "Hardware Store POS",
+    category: "Point of sale · Retail",
     summary:
-      "A reconciliation and reporting tool for a remittance firm's operations team, turning nightly batch files into clear, auditable dashboards.",
-    tags: ["Python", "Django", "PostgreSQL"],
+      "A point-of-sale system for a hardware store, handling a large SKU catalog, variable pricing, and stock levels across a busy front counter.",
+    highlights: [
+      "Large SKU catalog management",
+      "Barcode-based checkout",
+      "Stock level tracking",
+      "Sales reporting",
+    ],
+    tags: ["React", "Node.js", "PostgreSQL"],
+    variant: 3,
+  },
+  {
+    name: "Expense Tracker",
+    category: "Web app · Finance",
+    confidential: true,
+    summary:
+      "A private expense-tracking tool built for a client to record spending, categorize transactions, and review where the money goes over time.",
+    highlights: [
+      "Transaction logging & categorization",
+      "Spending summaries by category",
+      "Date-range reporting",
+      "Private, single-tenant deployment",
+    ],
+    tags: ["Next.js", "TypeScript", "PostgreSQL"],
     variant: 2,
+  },
+  {
+    name: "Medicine Ordering Site",
+    category: "Web app · Healthcare",
+    summary:
+      "An internal medicine catalog and ordering site used by a virtual assistant to look up products and place orders quickly on a client's behalf.",
+    highlights: [
+      "Searchable medicine catalog",
+      "Order creation & tracking",
+      "VA-friendly workflow",
+      "Admin management",
+    ],
+    tags: ["Next.js", "React", "PostgreSQL"],
+    variant: 1,
   },
 ];
