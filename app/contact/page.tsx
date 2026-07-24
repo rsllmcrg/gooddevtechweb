@@ -7,9 +7,9 @@ import { contactInfo } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact — GoodDev Technology",
+  title: "Contact — GoodDev Tech",
   description:
-    "Get in touch with GoodDev Technology. Based in Lipa City, Philippines, working with clients around the world.",
+    "Get in touch with GoodDev Tech. Based in Lipa City, Philippines, working with clients around the world.",
   path: "/contact",
 });
 

@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "GoodDev Technology",
-  description: "GoodDev Technology — a Philippine software development studio.",
+  name: "GoodDev Tech",
+  description: "GoodDev Tech — a Philippine software development studio.",
 };
 
 export const contactInfo = {

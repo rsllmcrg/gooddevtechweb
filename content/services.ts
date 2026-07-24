@@ -9,7 +9,7 @@ export type Service = {
 };
 
 /**
- * The five services GoodDev Technology offers. Single source of truth —
+ * The five services GoodDev Tech offers. Single source of truth —
  * referenced by the Services page, the Home page teaser strip, and the
  * Contact page (via the `service` query param each scope-call CTA links
  * with, e.g. /contact?service=web-apps).

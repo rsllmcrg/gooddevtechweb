@@ -1,4 +1,4 @@
-# GoodDev Technology — Copy Deck
+# GoodDev Tech — Copy Deck
 
 Draft copy for all five pages: Home, Services, Work, About, Contact.
 Written for two audiences at once — Philippine SMEs and overseas
@@ -32,14 +32,14 @@ paste straight from here into JSX without reconciling wording.
 
 ## 1. Home
 
-**Meta title:** GoodDev Technology — Software Development Studio in the Philippines
-**Meta description:** GoodDev Technology builds web apps and custom software for Philippine SMEs and overseas teams alike — Manila-based, English-speaking, and timezone-friendly for APAC, US and EU clients.
+**Meta title:** GoodDev Tech — Software Development Studio in the Philippines
+**Meta description:** GoodDev Tech builds web apps and custom software for Philippine SMEs and overseas teams alike — Manila-based, English-speaking, and timezone-friendly for APAC, US and EU clients.
 
 ### Hero
 
 **H1:** A Philippine software studio built for global teams.
 
-**Subhead:** GoodDev Technology designs and ships web and software
+**Subhead:** GoodDev Tech designs and ships web and software
 products for local SMEs and overseas companies alike — with the
 timezone overlap, communication, and craft to make distance a
 non-issue.
@@ -95,7 +95,7 @@ wherever you're calling from.
 
 ## 2. Services
 
-**Meta title:** Services — GoodDev Technology
+**Meta title:** Services — GoodDev Tech
 **Meta description:** Web apps, custom software, mobile apps, integrations, and ongoing support — built by a Philippine team that works with local SMEs and overseas companies alike.
 
 **H1:** Services
@@ -160,8 +160,8 @@ right scope.
 
 ## 3. Work
 
-**Meta title:** Our Work — GoodDev Technology
-**Meta description:** A look at the web and software products GoodDev Technology has built for Philippine SMEs and overseas clients.
+**Meta title:** Our Work — GoodDev Tech
+**Meta description:** A look at the web and software products GoodDev Tech has built for Philippine SMEs and overseas clients.
 
 **H1:** Work
 
@@ -205,10 +205,10 @@ numbers only, never invented ones.]
 
 ## 4. About
 
-**Meta title:** About — GoodDev Technology
-**Meta description:** GoodDev Technology is a Philippine software studio built to work as easily with local SMEs as with overseas teams. Here's what we believe and how we work.
+**Meta title:** About — GoodDev Tech
+**Meta description:** GoodDev Tech is a Philippine software studio built to work as easily with local SMEs as with overseas teams. Here's what we believe and how we work.
 
-**H1:** About GoodDev Technology
+**H1:** About GoodDev Tech
 
 **Intro paragraph (values-driven, safe to ship as final copy):** We
 build small, senior teams around each project, write code we're
@@ -261,8 +261,8 @@ in `content/site.ts` rather than retyping it here.)_
 
 ## 5. Contact
 
-**Meta title:** Contact — GoodDev Technology
-**Meta description:** Get in touch with GoodDev Technology. Based in Manila, working with clients across the Philippines, the US, the UK, and the EU.
+**Meta title:** Contact — GoodDev Tech
+**Meta description:** Get in touch with GoodDev Tech. Based in Manila, working with clients across the Philippines, the US, the UK, and the EU.
 
 **H1:** Let's talk about your project
 

@@ -7,7 +7,7 @@ import { confidentialityNote, projects } from "@/content/work";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Our Work — GoodDev Technology",
+  title: "Our Work — GoodDev Tech",
   description:
     "Selected web and software projects — API integrations, custom platforms, and full-stack product work delivered end to end.",
   path: "/work",

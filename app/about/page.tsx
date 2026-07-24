@@ -8,9 +8,9 @@ import { founders, foundingStory, processSteps } from "@/content/about";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About — GoodDev Technology",
+  title: "About — GoodDev Tech",
   description:
-    "GoodDev Technology is a Philippine software studio built to work as easily with local SMEs as with overseas teams. Here's what we believe and how we work.",
+    "GoodDev Tech is a Philippine software studio built to work as easily with local SMEs as with overseas teams. Here's what we believe and how we work.",
   path: "/about",
 });
 
@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <>
       <Section containerClassName="flex flex-col items-center gap-space-md text-center">
-        <h1>About GoodDev Technology</h1>
+        <h1>About GoodDev Tech</h1>
         <p className="text-grey-700 max-w-md">
           We build small, senior teams around each project, write code
           we&apos;re willing to put our name on, and treat

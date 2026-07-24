@@ -11,7 +11,7 @@ export type Founder = {
  * Real, founder-confirmed copy — not a placeholder.
  */
 export const foundingStory =
-  "GoodDev Technology was founded in 2026 by two computer engineers who " +
+  "GoodDev Tech was founded in 2026 by two computer engineers who " +
   "wanted to build software for a living — not as a side effect of someone " +
   "else's roadmap, but as the work itself. We're based in Batangas, and we " +
   "build for clients here in the Philippines and abroad.";
