@@ -4,9 +4,6 @@ import { TextLink } from "@/components/TextLink";
 import { contactInfo, siteConfig } from "@/content/site";
 
 export function Footer() {
-  const mailHref = `mailto:${contactInfo.email}`;
-  const telHref = `tel:${contactInfo.phone.replace(/\s+/g, "")}`;
-
   return (
     <footer className="border-grey-100 border-t">
       <Container className="gap-space-xl py-space-xl md:py-space-2xl flex flex-col md:flex-row md:justify-between">
@@ -25,18 +22,13 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="gap-space-xs flex flex-col">
-          <TextLink href={mailHref}>{contactInfo.email}</TextLink>
-          <TextLink href={telHref}>{contactInfo.phone}</TextLink>
-        </div>
-
-        <div className="gap-space-xs flex flex-col">
-          {contactInfo.socials.map((social) => (
-            <TextLink key={social.href} href={social.href}>
-              {social.label}
-            </TextLink>
-          ))}
-        </div>
+        {contactInfo.team.map((person) => (
+          <div key={person.email} className="gap-space-xs flex flex-col">
+            <p className="text-ink text-small font-semibold">{person.name}</p>
+            <TextLink href={`mailto:${person.email}`}>{person.email}</TextLink>
+            <TextLink href={person.facebook}>Facebook</TextLink>
+          </div>
+        ))}
       </Container>
     </footer>
   );

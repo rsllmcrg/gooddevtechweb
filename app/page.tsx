@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "GoodDev Technology — Software Development Studio",
   description:
-    "GoodDev Technology builds web apps and custom software for SMEs and overseas teams alike — Manila-based, English-speaking, and timezone-friendly for APAC, US and EU clients.",
+    "GoodDev Technology builds web apps and custom software for SMEs and overseas teams alike — Philippines-based, English-speaking, and timezone-friendly for APAC, US and EU clients.",
   path: "/",
 });
 

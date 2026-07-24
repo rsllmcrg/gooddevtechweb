@@ -51,12 +51,13 @@ export function pageMetadata({
 /**
  * schema.org LocalBusiness JSON-LD, rendered once in the root layout so it
  * describes the business site-wide rather than per page. Sourced from the
- * same contactInfo used by the Footer/Contact page — currently placeholder
- * data (see the notice in content/site.ts), so this is structurally correct
- * but not yet pointing at real contact details.
+ * same contactInfo used by the Footer/Contact page. There's no single
+ * canonical business email or phone — contactInfo.team lists individual
+ * people instead — so this uses the first team member's email as the
+ * general contact point and links out to each person's Facebook profile.
  */
 export function localBusinessJsonLd() {
-  // contactInfo.city is free text ("Manila, Philippines") for display
+  // contactInfo.city is free text ("Lipa City, Philippines") for display
   // elsewhere on the site; addressCountry needs an ISO 3166-1 alpha-2 code
   // per Google's structured data guidelines, so it's set directly rather
   // than parsed out of that string.
@@ -70,13 +71,12 @@ export function localBusinessJsonLd() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteUrl,
-    email: contactInfo.email,
-    telephone: contactInfo.phone,
+    email: contactInfo.team[0].email,
     address: {
       "@type": "PostalAddress",
       addressLocality,
       addressCountry: "PH",
     },
-    sameAs: contactInfo.socials.map((social) => social.href),
+    sameAs: contactInfo.team.map((person) => person.facebook),
   };
 }

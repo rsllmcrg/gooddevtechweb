@@ -78,9 +78,8 @@ export default function AboutPage() {
         <h2>Where we work</h2>
         <p className="text-grey-700 mt-space-md max-w-2xl">
           We&apos;re based in {contactInfo.city}. {contactInfo.overlapHours}{" "}
-          Every project gets a single English-speaking point of contact, and
-          calls are scheduled within that overlap — not at whatever hour happens
-          to be convenient for us.
+          Every project gets a single English-speaking point of contact, so
+          communication never depends on catching the right hour.
         </p>
       </Section>
 

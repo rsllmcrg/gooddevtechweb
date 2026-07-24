@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contact — GoodDev Technology",
   description:
-    "Get in touch with GoodDev Technology. Based in Manila, working with clients across the Philippines, the US, the UK, and the EU.",
+    "Get in touch with GoodDev Technology. Based in Lipa City, Philippines, working with clients across the Philippines, the US, the UK, and the EU.",
   path: "/contact",
 });
 
@@ -20,8 +20,6 @@ export default async function ContactPage({
 }) {
   const { service: serviceSlug } = await searchParams;
   const preselected = services.find((service) => service.slug === serviceSlug);
-  const mailHref = `mailto:${contactInfo.email}`;
-  const telHref = `tel:${contactInfo.phone.replace(/\s+/g, "")}`;
 
   return (
     <Section containerClassName="grid grid-cols-1 gap-space-2xl lg:grid-cols-3">
@@ -44,28 +42,23 @@ export default async function ContactPage({
       <div className="border-grey-100 gap-space-lg pt-space-xl lg:pl-space-2xl flex flex-col lg:col-span-1 lg:border-t-0 lg:border-l lg:pt-0">
         <div>
           <h2 className="text-h4-sm md:text-h4-md lg:text-h4 font-semibold">
-            Prefer email or a call?
+            Prefer email or Facebook?
           </h2>
           <p className="text-grey-700 text-small mt-space-xs">
             Same details as the footer — reach us directly.
           </p>
         </div>
 
-        <div className="gap-space-xs flex flex-col">
-          <TextLink href={mailHref}>{contactInfo.email}</TextLink>
-          <TextLink href={telHref}>{contactInfo.phone}</TextLink>
-        </div>
+        {contactInfo.team.map((person) => (
+          <div key={person.email} className="gap-space-xs flex flex-col">
+            <p className="text-ink text-small font-semibold">{person.name}</p>
+            <TextLink href={`mailto:${person.email}`}>{person.email}</TextLink>
+            <TextLink href={person.facebook}>Facebook</TextLink>
+          </div>
+        ))}
 
         <p className="text-grey-700 text-small">{contactInfo.city}</p>
         <p className="text-grey-700 text-small">{contactInfo.overlapHours}</p>
-
-        <div className="gap-space-xs flex flex-col">
-          {contactInfo.socials.map((social) => (
-            <TextLink key={social.href} href={social.href}>
-              {social.label}
-            </TextLink>
-          ))}
-        </div>
       </div>
     </Section>
   );
