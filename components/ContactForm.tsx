@@ -17,6 +17,7 @@ const BUDGET_OPTIONS = [
 type FormValues = {
   name: string;
   email: string;
+  phone: string;
   company: string;
   service: string;
   budget: string;
@@ -28,6 +29,7 @@ type FormValues = {
 const initialValues: FormValues = {
   name: "",
   email: "",
+  phone: "",
   company: "",
   service: "",
   budget: "",
@@ -52,6 +54,14 @@ function validate(values: FormValues): FormErrors {
     errors.email = "Enter your email address.";
   } else if (!EMAIL_PATTERN.test(values.email.trim())) {
     errors.email = "Enter a valid email address, like you@example.com.";
+  }
+
+  if (!values.phone.trim()) {
+    errors.phone = "Enter your phone number.";
+  }
+
+  if (!values.service.trim()) {
+    errors.service = "Select a project type.";
   }
 
   if (!values.message.trim()) {
@@ -238,6 +248,24 @@ export function ContactForm({ services }: { services: string[] }) {
         />
       </Field>
 
+      <Field id="phone" label="Phone number" required error={errors.phone}>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          required
+          aria-required="true"
+          aria-invalid={Boolean(errors.phone)}
+          aria-describedby={errors.phone ? "phone-error" : undefined}
+          value={values.phone}
+          onChange={(event) => updateField("phone", event.target.value)}
+          onBlur={() => handleBlur("phone")}
+          className={inputClasses(Boolean(errors.phone))}
+        />
+      </Field>
+
       <Field id="company" label="Company">
         <input
           id="company"
@@ -251,15 +279,27 @@ export function ContactForm({ services }: { services: string[] }) {
       </Field>
 
       <div className="gap-space-lg grid grid-cols-1 sm:grid-cols-2">
-        <Field id="service" label="Service of interest">
+        <Field
+          id="service"
+          label="Project type"
+          required
+          error={errors.service}
+        >
           <select
             id="service"
             name="service"
+            required
+            aria-required="true"
+            aria-invalid={Boolean(errors.service)}
+            aria-describedby={errors.service ? "service-error" : undefined}
             value={values.service}
             onChange={(event) => updateField("service", event.target.value)}
-            className={inputClasses(false)}
+            onBlur={() => handleBlur("service")}
+            className={inputClasses(Boolean(errors.service))}
           >
-            <option value="">Not sure yet</option>
+            <option value="" disabled>
+              Select a project type
+            </option>
             {services.map((service) => (
               <option key={service} value={service}>
                 {service}
