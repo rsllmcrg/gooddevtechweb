@@ -27,6 +27,7 @@ export const founders: Founder[] = [
   {
     name: "Roselle Anne Macaraig Reyes",
     role: "Founder",
+    photo: "/founders/roselle.jpg",
     bio:
       "Computer Engineering, Batangas State University (2023). Three years " +
       "building production software — from real-time embedded systems for " +
@@ -37,6 +38,7 @@ export const founders: Founder[] = [
   {
     name: "Stephen Rouver Coronel",
     role: "Founder",
+    photo: "/founders/stephen.jpg",
     bio:
       "Computer Engineering at the University of Batangas, and the other half " +
       "of GoodDev's two-person team. He works at the front of the stack — the " +
