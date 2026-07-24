@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
-import { TeamCard } from "@/components/TeamCard";
+import { FounderCard } from "@/components/FounderCard";
 import { contactInfo } from "@/content/site";
 import { principles } from "@/content/home";
-import { team, processSteps } from "@/content/about";
+import { founders, foundingStory, processSteps } from "@/content/about";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -25,18 +25,10 @@ export default function AboutPage() {
           &quot;maintainable&quot; as a feature — not an afterthought.
         </p>
         <p className="text-grey-500 text-small">
-          Based in {contactInfo.city} — working with clients across the
-          Philippines, the US, the UK, and the EU.
+          Based in {contactInfo.city} — building for clients here in the
+          Philippines and abroad, across the US, the UK, and the EU.
         </p>
-        <div className="border-grey-100 mt-space-sm p-space-md w-full max-w-md rounded-md border border-dashed text-left">
-          <p className="text-grey-500 text-small font-semibold">Placeholder</p>
-          <p className="text-grey-700 text-small mt-space-xs">
-            Anything more specific than the above — founding year, founder bio,
-            a &quot;why we started this&quot; story — is a factual claim this
-            page can&apos;t invent. Add the real version once the founder
-            confirms it.
-          </p>
-        </div>
+        <p className="text-grey-700 mt-space-sm max-w-2xl">{foundingStory}</p>
       </Section>
 
       {/* What we believe */}
@@ -56,19 +48,12 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Team */}
+      {/* Founders */}
       <Section className="border-grey-100 border-t">
-        <h2>Team</h2>
-        <div className="border-grey-100 mt-space-md p-space-md w-full max-w-md rounded-md border border-dashed text-left">
-          <p className="text-grey-500 text-small font-semibold">Placeholder</p>
-          <p className="text-grey-700 text-small mt-space-xs">
-            Names, roles, and photos below are stand-ins pending the
-            founder&apos;s real team roster.
-          </p>
-        </div>
-        <div className="mt-space-lg gap-space-xl flex flex-wrap justify-center">
-          {team.map((member) => (
-            <TeamCard key={member.name} member={member} />
+        <h2>Founders</h2>
+        <div className="mt-space-lg gap-space-xl grid grid-cols-1 sm:grid-cols-2">
+          {founders.map((founder) => (
+            <FounderCard key={founder.name} founder={founder} />
           ))}
         </div>
       </Section>

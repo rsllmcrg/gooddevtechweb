@@ -14,9 +14,10 @@ inline where they occur too):
 1. **Work page case studies** — the three project entries are
    structural placeholders (no invented client names, industries, or
    metrics). Real projects need to go in before this page ships.
-2. **About page founding story / team** — the values copy is final;
-   anything about specific dates, headcount, or founder bio is a
-   placeholder, not a fabricated fact.
+2. **About page founding story / founders** — founding story, founder
+   names, and Roselle's bio are real and confirmed. Stephen's bio beyond
+   the first sentence is an invented draft (see the NOTE in
+   `content/about.ts`) — swap it for his real focus before launch.
 3. **Contact details** — every page below assumes contact info (email,
    phone, social links, overlap hours) is pulled from the single
    `contactInfo` object in `content/site.ts`, not retyped per page.
