@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 
 // No title template here on purpose — each page (via lib/seo.ts's
 // pageMetadata) passes its own already-complete title (e.g. "Services —
-// GoodDev Technology") so the <title> tag and the Open Graph/Twitter titles
+// GoodDev Tech") so the <title> tag and the Open Graph/Twitter titles
 // always match exactly, rather than a template only affecting one of them.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

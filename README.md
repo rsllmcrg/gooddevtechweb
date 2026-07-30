@@ -2,7 +2,7 @@
 
 # hi!
 
-Marketing site for GoodDev Technology — a Philippine software development
+Marketing site for GoodDev Tech — a Philippine software development
 studio. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
 ## Getting started

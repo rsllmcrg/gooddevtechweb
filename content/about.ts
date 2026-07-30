@@ -1,21 +1,51 @@
-export type TeamMember = {
+export type Founder = {
   name: string;
   role: string;
   /** Path under /public. Falls back to a placeholder avatar when absent. */
   photo?: string;
+  bio: string;
 };
 
 /**
- * PLACEHOLDER — every entry is a stand-in pending the founder's real team
- * roster and headshots. The count here (4) is arbitrary; the team grid
- * itself is built and verified to hold up cleanly anywhere from 1 to 6
- * members, so entries can be added or removed freely.
+ * The one-paragraph origin story shown at the top of the About page.
+ * Real, founder-confirmed copy — not a placeholder.
  */
-export const team: TeamMember[] = [
-  { name: "[Team member 1]", role: "[Role]" },
-  { name: "[Team member 2]", role: "[Role]" },
-  { name: "[Team member 3]", role: "[Role]" },
-  { name: "[Team member 4]", role: "[Role]" },
+export const foundingStory =
+  "GoodDev Tech was founded in 2026 by two computer engineers who " +
+  "wanted to build software for a living — not as a side effect of someone " +
+  "else's roadmap, but as the work itself. We're based in Batangas, and we " +
+  "build for clients here in the Philippines and abroad.";
+
+/**
+ * The two founders. Real names and bios.
+ *
+ * NOTE: Stephen's focus (everything after the first sentence) is a
+ * placeholder draft — invented to be revised, not founder-confirmed. Swap
+ * it for his real specialty when he confirms it.
+ */
+export const founders: Founder[] = [
+  {
+    name: "Roselle Anne Macaraig Reyes",
+    role: "Founder",
+    photo: "/founders/roselle.jpg",
+    bio:
+      "Computer Engineering, Batangas State University (2023). Three years " +
+      "building production software — from real-time embedded systems for " +
+      "consumer hardware to full-stack web platforms handling inventory and " +
+      "logistics at scale. Comfortable across the whole stack, from firmware " +
+      "to React.",
+  },
+  {
+    name: "Stephen Rouver Coronel",
+    role: "Founder",
+    photo: "/founders/stephen.jpg",
+    bio:
+      "Computer Engineering at the University of Batangas, and the other half " +
+      "of GoodDev's two-person team. He works at the front of the stack — the " +
+      "web and mobile interfaces clients and their users actually touch — and " +
+      "on turning rough requirements into something you can click through. " +
+      "Currently finishing his degree while shipping alongside it.",
+  },
 ];
 
 export const processSteps = [

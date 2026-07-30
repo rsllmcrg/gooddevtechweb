@@ -63,7 +63,7 @@ function buildHtml(input: ContactNotificationInput): string {
     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;">
       <h1 style="font-size:20px;margin:0 0 16px;color:#111;">New project inquiry</h1>
       <p style="font-size:14px;color:#444;margin:0 0 20px;">
-        ${escapeHtml(input.name)} submitted the contact form on GoodDev Technology.
+        ${escapeHtml(input.name)} submitted the contact form on GoodDev Tech.
       </p>
       <table style="width:100%;border-collapse:collapse;border:1px solid #e5e5e5;border-radius:6px;overflow:hidden;">
         ${rowsHtml}
@@ -103,7 +103,7 @@ export async function sendContactNotification(
     : DEFAULT_RECIPIENTS;
   const fromEmail =
     process.env.CONTACT_FROM_EMAIL ?? "stehencoronel0913@gmail.com";
-  const fromName = process.env.CONTACT_FROM_NAME ?? "GoodDev Technology";
+  const fromName = process.env.CONTACT_FROM_NAME ?? "GoodDev Tech";
 
   const response = await fetch(BREVO_SEND_URL, {
     method: "POST",
