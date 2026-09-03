@@ -1,0 +1,96 @@
+---
+title: One system for the whole clinic, from kiosk check-in to billing
+summary: Built a dental practice management system that runs a clinic end to end — a patient-facing check-in kiosk and live queue display out front, with charting, treatment planning, insurance, and billing behind it.
+industry: Dental healthcare
+role: Full Stack Developer
+service: Web Apps
+year: 2026
+order: 1
+liveUrl: https://dmddental-staging.up.railway.app/
+stack:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Vite
+  - REST API
+  - Railway
+# Only the patient-facing screens are shown. The staff side — agenda, charts,
+# treatment plans, reports, settings — sits behind clinical authentication and
+# is deliberately not screenshotted: those screens carry real patient records.
+cover:
+  src: /case-studies/dmd-dental-practice-management/cover.png
+  alt: The clinic's welcome kiosk, asking an arriving patient to choose "New Patient" or "Old Patient".
+outcomes:
+  - label: Check-in
+    value: Patient self-service
+  - label: Waiting room
+    value: Live queue display
+  - label: Scope
+    value: Chart to invoice in one system
+screenshots:
+  - src: /case-studies/dmd-dental-practice-management/now-serving.png
+    alt: The waiting-room display showing the number now being served, the count of patients waiting, and an approximate wait time.
+    caption: The waiting room gets its own screen. It updates on its own, so nobody has to ask the front desk who's next.
+  - src: /case-studies/dmd-dental-practice-management/your-visit.png
+    alt: A "Before you sit down" page with four cards covering ID, insurance details, medicines and allergies, and arriving early.
+    caption: The things that stall an appointment — no ID, no insurance card, an undisclosed medication — asked for before the patient reaches the chair.
+---
+
+## The problem
+
+A dental clinic runs on information that arrives in the wrong order. The
+patient shows up before their chart is open, the medical history is a paper
+form filled in at the counter, the insurance card is at home, and the waiting
+room has no idea whose turn it is — so the front desk answers "how much longer?"
+instead of doing the work in front of them.
+
+Off-the-shelf practice management software solves some of that and imposes a
+lot: per-seat pricing, workflows built for a different country's insurance
+system, and no room for how this clinic actually greets people. The clinic
+needed the whole path — arrival, chart, treatment, invoice — to be one system
+rather than a scheduling tool plus a spreadsheet plus a paper folder.
+
+## The approach
+
+The build treats the clinic as two audiences with different needs, sharing one
+data model.
+
+- **A kiosk the patient can use unaided.** Arrival starts with one question —
+  first visit, or returning — and branches from there. New patients complete
+  their own intake, including the full medical history, allergy, and medication
+  questionnaire, in language that reads like a person wrote it. Returning
+  patients just identify themselves and join the queue.
+- **A waiting room that answers its own question.** A live display carries the
+  number being served, how many are ahead, and an approximate wait, refreshed
+  without anyone touching it. The front desk stops being a status API.
+- **Clinical records built around the tooth, not the appointment.** Charting
+  works per tooth and per surface, with the conditions a dentist actually
+  records — caries, crown, implant, denture — feeding treatment plan items
+  priced off a configurable fee schedule.
+- **Insurance and billing modelled properly.** Carrier and HMO plans carry
+  group ID, effective date, deductible, copay, and annual maximum, so
+  eligibility is checked before treatment rather than discovered at the
+  counter. Invoices age into 0–30 / 31–60 / 61–90 / 90+ buckets, which is how
+  receivables are actually chased.
+- **Configuration instead of code changes.** Operatories, practitioners,
+  clinic hours, default appointment length, and default fees are all settings.
+  A second chair or a new dentist is data entry, not a deployment.
+- **Roles that match the room.** Dentist, hygienist, assistant, and patient see
+  different applications built from the same API — the patient's kiosk can't
+  reach a chart, and doesn't need to.
+
+Built for a Filipino clinic, so the intake reads bilingually where it matters
+— the "no known conditions" answer is a button that says _Healthy po ako!_
+rather than a negation of a checklist.
+
+## The outcome
+
+The clinic runs one system from the front door to the invoice. A patient
+checks themselves in, the waiting room tells them where they stand, and the
+chart is open before they sit down — while scheduling, clinical notes,
+prescriptions, treatment plans, insurance, and receivables all read from the
+same records instead of being reconciled by hand.
+
+Because operatories, practitioners, hours, and fees are configuration rather
+than assumptions baked into the code, the same system fits the next clinic
+without a rewrite.

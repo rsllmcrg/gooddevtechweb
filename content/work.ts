@@ -1,3 +1,5 @@
+import { measureImage, type MeasuredImage } from "@/lib/images";
+
 /**
  * Real, non-confidential project descriptions. Two rules govern this file:
  *
@@ -28,8 +30,17 @@ export type Project = {
   confidential?: boolean;
   /** True to render as a large showcase row; otherwise it goes in the grid. */
   featured?: boolean;
-  /** Which abstract mockup layout to draw (see components/BrowserMockup.tsx). */
-  variant: 1 | 2 | 3 | 4;
+  /**
+   * A real screenshot of the shipped product. When present it is rendered in
+   * place of the drawn mockup — same laptop frame, actual pixels. Measured off
+   * disk so next/image reserves exact space; a missing file fails the build.
+   */
+  screenshot?: MeasuredImage;
+  /**
+   * Which abstract mockup layout to draw (see components/BrowserMockup.tsx).
+   * Only used when there is no `screenshot` to show instead.
+   */
+  variant?: 1 | 2 | 3 | 4;
 };
 
 /** Shown on the page because at least one project below is anonymized. */
@@ -37,6 +48,33 @@ export const confidentialityNote =
   "Some projects are presented anonymously to respect client confidentiality, while accurately representing the technical work delivered.";
 
 export const projects: Project[] = [
+  {
+    name: "DMD Dental — Practice Management System",
+    category: "Full-stack product · Dental healthcare",
+    href: "https://dmddental-staging.up.railway.app/",
+    featured: true,
+    summary:
+      "A dental practice management system that runs a clinic end to end — patients check themselves in at a kiosk and watch a live queue display, while the clinical side handles per-tooth charting, treatment planning, insurance, and billing from the same records.",
+    highlights: [
+      "Patient self-service check-in kiosk",
+      "Live waiting-room queue display",
+      "Per-tooth, per-surface clinical charting",
+      "Treatment plans priced off a configurable fee schedule",
+      "Insurance & HMO eligibility, invoice ageing",
+      "Role-based apps for dentist, hygienist, assistant & patient",
+    ],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "REST APIs"],
+    // The patient-facing kiosk. The staff side sits behind clinical
+    // authentication and is deliberately not screenshotted — those screens
+    // carry real patient records.
+    screenshot: measureImage(
+      {
+        src: "/case-studies/dmd-dental-practice-management/cover.png",
+        alt: 'The DMD Dental welcome kiosk, asking an arriving patient to choose "New Patient" or "Old Patient".',
+      },
+      "DMD Dental — Practice Management System",
+    ),
+  },
   {
     name: "Farmia — Logistics API Integration",
     category: "Full-stack · Logistics",

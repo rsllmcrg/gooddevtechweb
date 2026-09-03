@@ -1,11 +1,13 @@
+import { LaptopFrame } from "@/components/LaptopFrame";
 import { cn } from "@/lib/utils";
 
 /**
- * A decorative laptop mockup used on the Work page to stand in for real
- * project screenshots. Purely presentational (aria-hidden) — it draws a
- * populated, realistic-looking interface inside a laptop device frame so the
- * page reads like a portfolio showcase without claiming to show real client
- * screens.
+ * A decorative laptop mockup used on the Work page to stand in for a real
+ * project screenshot. Purely presentational (aria-hidden) — it draws a
+ * populated, realistic-looking interface inside the shared `LaptopFrame` so
+ * the page reads like a portfolio showcase without claiming to show real
+ * client screens. Projects that do have a shippable screenshot use
+ * `ProjectScreenshot` instead, which reuses the same frame.
  *
  * `variant` picks one of four believable layouts (marketing site, dashboard,
  * list/table, gallery) so a grid of these doesn't look repetitive. Colour is
@@ -20,39 +22,14 @@ export function BrowserMockup({
   className?: string;
 }) {
   return (
-    <div aria-hidden="true" className={cn("w-full", className)}>
-      {/* Laptop lid + screen */}
-      <div className="bg-grey-900 mx-auto w-[94%] rounded-t-xl p-[1.5%] shadow-sm">
-        {/* Camera dot */}
-        <div className="bg-grey-700 mx-auto mb-[1%] h-1 w-1 rounded-full" />
-        <div className="overflow-hidden rounded-md bg-white">
-          {/* Browser chrome */}
-          <div className="border-grey-100 flex items-center gap-1.5 border-b px-2 py-1.5">
-            <span className="flex gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#ff5f57]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#febc2e]" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#28c840]" />
-            </span>
-            <span className="bg-grey-100 text-grey-500 ml-2 flex h-3.5 flex-1 items-center rounded-full px-2 text-[6px] sm:text-[7px]">
-              gooddev.tech
-            </span>
-          </div>
-
-          {/* Screen */}
-          <div className="bg-paper">
-            {variant === 1 && <MarketingScreen />}
-            {variant === 2 && <DashboardScreen />}
-            {variant === 3 && <ListScreen />}
-            {variant === 4 && <GalleryScreen />}
-          </div>
-        </div>
+    <LaptopFrame label="gooddev.tech" decorative className={className}>
+      <div className="bg-paper">
+        {variant === 1 && <MarketingScreen />}
+        {variant === 2 && <DashboardScreen />}
+        {variant === 3 && <ListScreen />}
+        {variant === 4 && <GalleryScreen />}
       </div>
-
-      {/* Laptop base + hinge */}
-      <div className="bg-grey-900 mx-auto h-[2.5%] min-h-[8px] w-full rounded-b-lg">
-        <div className="bg-grey-700 mx-auto h-full w-[14%] rounded-b-lg" />
-      </div>
-    </div>
+    </LaptopFrame>
   );
 }
 
@@ -254,9 +231,7 @@ function ListScreen() {
           <span
             className={cn(
               "w-12 text-right",
-              status === "Active"
-                ? "text-red font-semibold"
-                : "text-grey-300",
+              status === "Active" ? "text-red font-semibold" : "text-grey-300",
             )}
           >
             {status}

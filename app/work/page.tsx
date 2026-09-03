@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { BrowserMockup } from "@/components/BrowserMockup";
 import { Button } from "@/components/Button";
+import { ProjectScreenshot } from "@/components/ProjectScreenshot";
 import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
-import { confidentialityNote, projects } from "@/content/work";
+import { confidentialityNote, projects, type Project } from "@/content/work";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -46,6 +47,34 @@ function hostLabel(href: string): string {
     .replace(/\/$/, "");
 }
 
+/**
+ * A project's visual: the real product screenshot where we have one to show,
+ * and the drawn placeholder where we don't. Both sit in the same laptop frame,
+ * so a page mixing the two keeps one device treatment.
+ */
+function ProjectVisual({
+  project,
+  sizes,
+  className,
+}: {
+  project: Project;
+  sizes?: string;
+  className?: string;
+}) {
+  if (project.screenshot) {
+    return (
+      <ProjectScreenshot
+        image={project.screenshot}
+        label={project.href ? hostLabel(project.href) : "gooddev.tech"}
+        sizes={sizes}
+        className={className}
+      />
+    );
+  }
+
+  return <BrowserMockup variant={project.variant} className={className} />;
+}
+
 export default function WorkPage() {
   const featured = projects.filter((project) => project.featured);
   const more = projects.filter((project) => !project.featured);
@@ -69,8 +98,9 @@ export default function WorkPage() {
       {featured.map((project, index) => (
         <Section key={project.name} className="border-grey-100 border-t">
           <div className="gap-space-xl lg:gap-space-2xl grid items-center lg:grid-cols-2">
-            <BrowserMockup
-              variant={project.variant}
+            <ProjectVisual
+              project={project}
+              sizes="(min-width: 1024px) 45vw, 100vw"
               className={index % 2 === 1 ? "lg:order-last" : undefined}
             />
             <div className="gap-space-md flex flex-col">
@@ -119,7 +149,10 @@ export default function WorkPage() {
                 key={project.name}
                 className="gap-space-md flex flex-col"
               >
-                <BrowserMockup variant={project.variant} />
+                <ProjectVisual
+                  project={project}
+                  sizes="(min-width: 640px) 45vw, 100vw"
+                />
                 <div className="gap-space-sm flex flex-col">
                   <Eyebrow>
                     {project.confidential ? "Confidential · " : ""}

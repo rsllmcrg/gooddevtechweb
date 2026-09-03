@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { imageSize } from "image-size";
 import { z } from "zod";
+import { measureImage, type MeasuredImage } from "@/lib/images";
 
 /**
  * The case-study content layer.
@@ -18,7 +18,6 @@ import { z } from "zod";
  */
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "case-studies");
-const PUBLIC_DIR = path.join(process.cwd(), "public");
 
 const imageSchema = z.strictObject({
   /** Path under /public, e.g. "/case-studies/farmia/dashboard.png". */
@@ -89,11 +88,8 @@ const frontmatterSchema = z
 
 type Frontmatter = z.infer<typeof frontmatterSchema>;
 
-/** An image with the intrinsic dimensions next/image needs to reserve space. */
-export type CaseStudyImage = z.infer<typeof imageSchema> & {
-  width: number;
-  height: number;
-};
+/** Re-exported under the old name so callers need not reach into lib/images. */
+export type CaseStudyImage = MeasuredImage;
 
 export type CaseStudy = Omit<Frontmatter, "cover" | "screenshots"> & {
   slug: string;
@@ -102,33 +98,6 @@ export type CaseStudy = Omit<Frontmatter, "cover" | "screenshots"> & {
   /** What to show where a client name would go, honouring the NDA rule. */
   attribution: string;
 };
-
-/**
- * Reads an image's real dimensions off disk so next/image can reserve exact
- * space and avoid layout shift — authors never hand-write width/height.
- * A missing or unreadable file is a content error, so it throws.
- */
-function resolveImage(
-  image: z.infer<typeof imageSchema>,
-  file: string,
-): CaseStudyImage {
-  const absolute = path.join(PUBLIC_DIR, image.src);
-
-  if (!fs.existsSync(absolute)) {
-    throw new Error(
-      `${file}: image "${image.src}" was not found at public${image.src}`,
-    );
-  }
-
-  try {
-    const { width, height } = imageSize(fs.readFileSync(absolute));
-    return { ...image, width, height };
-  } catch (cause) {
-    throw new Error(`${file}: could not read dimensions of "${image.src}"`, {
-      cause,
-    });
-  }
-}
 
 function parseFile(filename: string): CaseStudy {
   const slug = filename.replace(/\.mdx$/, "");
@@ -147,8 +116,8 @@ function parseFile(filename: string): CaseStudy {
   return {
     ...data,
     slug,
-    cover: cover ? resolveImage(cover, filename) : undefined,
-    screenshots: screenshots.map((shot) => resolveImage(shot, filename)),
+    cover: cover ? measureImage(cover, filename) : undefined,
+    screenshots: screenshots.map((shot) => measureImage(shot, filename)),
     attribution: data.client ?? data.industry,
   };
 }
