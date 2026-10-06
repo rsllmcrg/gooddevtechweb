@@ -1,0 +1,99 @@
+---
+title: An HR office that answers at midnight, in English or Tagalog
+summary: Built UBi, an AI HR self-service assistant for a university's faculty and staff — it answers from each employee's own record and the official policy handbook, files leave in conversation, and warns people before licenses, contracts, and leave credits lapse.
+industry: Higher education
+role: Full Stack Developer
+service: Web Apps
+year: 2026
+order: 2
+liveUrl: https://askhr-ub.up.railway.app/
+stack:
+  - React
+  - Vite
+  - React Router
+  - REST API
+  - Railway
+# Captured from the public demo, signed in with the demo accounts listed on the
+# login page. Every name, ID, and record shown is seeded demo data.
+cover:
+  src: /case-studies/ubi-hr-self-service/cover.png
+  alt: A faculty member filing sick leave in the UBi chat — the assistant lists the leave type, dates, working days, and remaining sick balance, then asks for confirmation before submitting.
+outcomes:
+  - label: Answers
+    value: Grounded in record & policy
+  - label: Language
+    value: English, Tagalog & Taglish
+  - label: Reminders
+    value: 90 days before anything lapses
+screenshots:
+  - src: /case-studies/ubi-hr-self-service/cited-answer.png
+    alt: A staff member's chat showing a yellow alert that four vacation leave days will be forfeited on December 31, and an answer about PRC license renewal that cites HR Memorandum 2022-11.
+    caption: Asked in Tagalog, answered from the actual memo — with the source named underneath. The alert above it came unprompted, from the employee's own leave balance.
+  - src: /case-studies/ubi-hr-self-service/expiry-monitor.png
+    alt: The HR admin dashboard with stat cards for queries, pending requests, open cases, expiring credentials, and deflection rate, above a credential and contract expiry monitor table.
+    caption: HR's side opens on the numbers that matter — what's waiting, what's expiring, and how much the assistant handled on its own. A daily job sends the reminders; HR can see who has read them.
+  - src: /case-studies/ubi-hr-self-service/policy-knowledge-base.png
+    alt: The policy knowledge base, listing policies such as leave filing, leave credit carry-over, maternity leave, faculty promotion, and certificate of employment requests, each with keywords, source document, and audience.
+    caption: The assistant only answers policy questions from this table. HR edits a policy and the next answer changes — no redeploy, no prompt engineering.
+  - src: /case-studies/ubi-hr-self-service/employee-records.png
+    alt: The employee records table showing role, department and campus, rank, contract status, sick and vacation leave balances, and credential status for each employee.
+    caption: The 201 file behind every answer — contract terms, leave balances, and professional credentials that the assistant reads from and the reminders watch.
+---
+
+## The problem
+
+A university HR office spends most of its day answering the same handful of
+questions. How many leave days do I have left? How do I file? When does my
+contract end? What do I need for a Certificate of Employment? Each answer is
+already written down somewhere — in the employee's 201 file or in the
+handbook — but finding it means a trip to the HRMO window or a message that
+waits until office hours.
+
+The expensive problems are the ones nobody asks about. A faculty member's PRC
+license lapses and they can't be assigned board-program subjects. Vacation
+credits past the carry-over limit quietly expire on December 31. A
+probationary contract nears its end with no one reminded. By the time HR finds
+out, it's already too late to fix.
+
+## The approach
+
+UBi is a chat-first self-service assistant for faculty and staff, with an
+administration dashboard behind it for HR.
+
+- **Answers from the record, not from a guess.** Personal questions — leave
+  balances, contract status, credentials — are answered from the employee's own
+  201 file. Policy questions are answered only from an HR-curated knowledge
+  base, and every policy answer names its source document and section.
+- **Speaks the way people actually ask.** Employees write in English, Tagalog,
+  or a mix of both. UBi understands all three and answers in kind; policy
+  keywords include the Tagalog phrasing people really type.
+- **Files requests in conversation.** "Sick leave, October 24–25" becomes a
+  leave application. UBi counts the working days, checks the remaining
+  balance, and asks for an explicit confirmation before anything is submitted.
+  Certificate of Employment and service record requests work the same way, and
+  employees can check the status of their requests in chat.
+- **Warns before things lapse.** A daily job watches professional licenses,
+  contract end dates, and leave credits that will be forfeited, and alerts
+  each employee starting 90 days out. HR sees who was reminded and whether
+  they've read it.
+- **Stays in its lane.** Off-topic questions get a polite redirect to what UBi
+  can actually help with, in the language they were asked in.
+- **Gives HR one place to work.** The admin dashboard tracks daily query
+  volume, the request approval queue (with remarks, through to "ready for
+  release"), feedback and concern reports with threaded replies, employee
+  records, and the expiry monitor. It also reports a deflection rate: how many
+  questions were resolved without an HR officer stepping in.
+- **Policies are data, not code.** HR adds or edits a policy — title,
+  keywords, source document, and whether it applies to everyone or only
+  faculty — and the assistant's very next answer reflects it.
+
+Access is role-based: faculty and staff see their own records and the chat, and
+HR administrators get the dashboard.
+
+## The outcome
+
+Faculty and staff get answers at any hour, in their own words, backed by their
+own records and the official policy text. Leave filing, COE requests, and status
+checks no longer need a trip to the HRMO window. HR spends its time on the
+approval queue and the cases that genuinely need a person, and finds out about
+expiring licenses and contracts months ahead instead of after the fact.

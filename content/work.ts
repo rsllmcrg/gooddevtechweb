@@ -76,6 +76,32 @@ export const projects: Project[] = [
     ),
   },
   {
+    name: "UBi — AI HR Self-Service Assistant",
+    category: "AI product · Higher education",
+    href: "https://askhr-ub.up.railway.app/",
+    featured: true,
+    summary:
+      "An HR self-service assistant for a university's faculty and staff. Employees ask in English or Tagalog and get answers grounded in their own 201 file and the official policy handbook — with sources cited — while HR runs approvals, employee records, and the policy knowledge base from an admin dashboard.",
+    highlights: [
+      "Bilingual chat (English, Tagalog & Taglish)",
+      "Answers from the employee's own HR record",
+      "Policy answers with cited sources",
+      "Leave filing & COE requests in conversation",
+      "License, contract & leave-forfeiture reminders",
+      "HR dashboard: approvals, records, policies",
+    ],
+    tags: ["React", "Vite", "React Router", "REST APIs", "Railway"],
+    // Captured from the public demo with the demo accounts listed on its
+    // login page — every name and record shown is seeded demo data.
+    screenshot: measureImage(
+      {
+        src: "/case-studies/ubi-hr-self-service/cover.png",
+        alt: "A faculty member filing sick leave in the UBi chat — the assistant confirms the leave type, dates, working days, and remaining sick balance before submitting.",
+      },
+      "UBi — AI HR Self-Service Assistant",
+    ),
+  },
+  {
     name: "Farmia — Logistics API Integration",
     category: "Full-stack · Logistics",
     href: "https://farmia.ph/",
