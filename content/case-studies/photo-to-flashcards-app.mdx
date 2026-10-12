@@ -1,0 +1,86 @@
+---
+title: From a photo of your notes to a quiz in your pocket
+summary: Built a cross-platform study app in Expo and React Native — snap your notes, write flashcards beside the photo, then study and quiz yourself, with the cards you missed brought back for another round.
+industry: Education
+role: Mobile Developer
+service: Mobile
+year: 2026
+order: 3
+liveUrl: https://photo-to-flashcards-quiz-app.expo.app/
+stack:
+  - Expo
+  - React Native
+  - Expo Router
+  - Expo Image Picker
+  - AsyncStorage
+# Real captures of the live app at phone size, composited into phone frames.
+# The sample deck was made for the screenshots in a clean browser session;
+# decks live on the device, so no one else's data was touched.
+cover:
+  src: /case-studies/photo-to-flashcards-app/cover.png
+  alt: Three phone screens — creating a deck with a photo of handwritten biology notes, a study card flipped to its answer, and a quiz question with "Missed it" and "Got it" buttons.
+outcomes:
+  - label: Platforms
+    value: iOS, Android & web
+  - label: Study loop
+    value: Photo → cards → quiz
+  - label: Your data
+    value: Stays on your device
+screenshots:
+  - src: /case-studies/photo-to-flashcards-app/deck.png
+    alt: Two phone screens of a deck — one with the photo of notes enlarged to full width, one with the photo shrunk above the add-card form and a list of six cards with edit and delete actions.
+    caption: The notes stay on screen while you write the cards. Tap the photo to read it full width, tap again to get the form back.
+  - src: /case-studies/photo-to-flashcards-app/results.png
+    alt: Two phone screens — quiz results showing 83%, five of six correct, with the missed card listed for review; and the My Decks home screen with the biology deck and its photo thumbnail.
+    caption: Results show exactly what to review, and "Retry 1 Missed" quizzes you on just those cards. Every deck is one tap away on the home screen.
+---
+
+## The problem
+
+Students already have the material. It's in a notebook, on a whiteboard photo,
+or on a printed handout. What they don't have is a quick way to turn it into
+something they can test themselves on. Flashcard apps start from a blank card,
+so the notes end up in one place and the cards in another, and the student
+spends the evening switching between a camera roll and a keyboard.
+
+Quizzing also tends to be all or nothing. You work through the whole deck
+again, including the cards you already know, when the real work is the two or
+three you keep getting wrong.
+
+## The approach
+
+The app is built around one loop: **photo, cards, study, quiz**. Each step is
+one screen and one tap away from the next.
+
+- **Start from the notes.** A new deck takes a name and, optionally, a photo,
+  either taken on the spot with the camera or picked from the library. The
+  photo is pinned to the top of the deck.
+- **Write cards with the source in view.** The add-card form sits right under
+  the photo. Tap the photo to enlarge it and read the handwriting, then tap
+  again to shrink it and keep typing. Cards can be edited or deleted in place.
+- **Study at your own pace.** Study mode shows one card at a time: tap to flip
+  between question and answer, step through with Prev and Next, or shuffle the
+  deck so you don't just memorise the order.
+- **Quiz yourself honestly.** Quiz mode asks a question, reveals the answer on
+  request, and lets the student mark it "Got it" or "Missed it". A progress bar
+  and a running score keep track as they go.
+- **Review only what you missed.** The results screen gives a percentage,
+  lists the missed cards with their answers, and offers "Retry Missed" to
+  quiz on just those, or a full retake.
+- **Private by default.** Decks, photos, and cards are stored on the device.
+  There is no account to create and nothing to sync before you can start.
+
+One Expo codebase, with file-based routing through Expo Router, ships to iOS,
+Android, and the web, so the same app runs on a student's phone and on a
+laptop browser.
+
+## The outcome
+
+A student can go from a page of notes to a working quiz in a couple of
+minutes, without leaving the app. Study sessions focus on the cards that
+need work, and because everything stays on the device, there is nothing to
+sign up for before the first deck.
+
+The project also shows how we build mobile apps: one React Native codebase
+that ships natively and on the web, with the platform's camera and photo
+library built in rather than added on later.

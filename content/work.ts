@@ -37,6 +37,12 @@ export type Project = {
    */
   screenshot?: MeasuredImage;
   /**
+   * The device the `screenshot` was taken on. "phone" shots are already
+   * composited into phone frames, so they render without the laptop frame.
+   * Defaults to "laptop".
+   */
+  device?: "laptop" | "phone";
+  /**
    * Which abstract mockup layout to draw (see components/BrowserMockup.tsx).
    * Only used when there is no `screenshot` to show instead.
    */
@@ -99,6 +105,40 @@ export const projects: Project[] = [
         alt: "A faculty member filing sick leave in the UBi chat — the assistant confirms the leave type, dates, working days, and remaining sick balance before submitting.",
       },
       "UBi — AI HR Self-Service Assistant",
+    ),
+  },
+  {
+    name: "Photo to Flashcards — Study App",
+    category: "Mobile app · Education",
+    href: "https://photo-to-flashcards-quiz-app.expo.app/",
+    featured: true,
+    summary:
+      "A cross-platform study app built with Expo and React Native. Students snap a photo of their notes, turn it into a deck of flashcards beside the photo, then study by flipping cards and test themselves with a self-graded quiz that brings back only the cards they missed.",
+    highlights: [
+      "Take or choose a photo of your notes",
+      "Write cards with the photo right above",
+      "Flip-card study mode with shuffle",
+      "Self-graded quiz with live score",
+      "Results screen with missed-card review",
+      "One codebase for iOS, Android & web",
+    ],
+    tags: [
+      "Expo",
+      "React Native",
+      "Expo Router",
+      "Expo Image Picker",
+      "AsyncStorage",
+    ],
+    device: "phone",
+    // Real captures of the live app, composited into phone frames. The deck
+    // was built for the screenshots in a clean browser session — decks are
+    // stored on the device, so nothing was written to anyone else's data.
+    screenshot: measureImage(
+      {
+        src: "/case-studies/photo-to-flashcards-app/cover.png",
+        alt: "Three phone screens from the app: creating a deck with a photo of handwritten biology notes, a study card showing its answer, and a quiz question with Missed it and Got it buttons.",
+      },
+      "Photo to Flashcards — Study App",
     ),
   },
   {

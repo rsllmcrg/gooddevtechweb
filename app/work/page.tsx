@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { BrowserMockup } from "@/components/BrowserMockup";
 import { Button } from "@/components/Button";
 import { ProjectScreenshot } from "@/components/ProjectScreenshot";
@@ -6,6 +7,7 @@ import { Section } from "@/components/Section";
 import { TextLink } from "@/components/TextLink";
 import { confidentialityNote, projects, type Project } from "@/content/work";
 import { pageMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Work — GoodDev Tech",
@@ -61,6 +63,20 @@ function ProjectVisual({
   sizes?: string;
   className?: string;
 }) {
+  // Phone shots arrive already framed, so a laptop around them would double up.
+  if (project.screenshot && project.device === "phone") {
+    return (
+      <Image
+        src={project.screenshot.src}
+        alt={project.screenshot.alt}
+        width={project.screenshot.width}
+        height={project.screenshot.height}
+        sizes={sizes}
+        className={cn("h-auto w-full rounded-xl", className)}
+      />
+    );
+  }
+
   if (project.screenshot) {
     return (
       <ProjectScreenshot
